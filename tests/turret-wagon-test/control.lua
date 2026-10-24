@@ -63,10 +63,7 @@ end
 local function turrets(wagon) return remote.call(MOD, "turrets", wagon) or {} end
 
 local function load_of(entity)
-  if SPEC.fluid then
-    local f = entity.get_fluid(1)
-    return f and f.amount or 0
-  end
+  if SPEC.fluid then return entity.get_fluid_contents()[SPEC.fluid] or 0 end
   local inv = entity.get_inventory(
     entity.type == "cargo-wagon" and defines.inventory.cargo_wagon or defines.inventory.turret_ammo
   )
@@ -135,7 +132,7 @@ local function setup()
 
   -- A: standing train, horizontal
   rail_line(surface, false, 1, -61, 61)
-  s.a = train(surface, false, 1, -9)
+  s.a, s.a_loco = train(surface, false, 1, -9)
   report(s.a and s.a.valid, "wagon can be built on rails")
   report(#turrets(s.a) == SPEC.mounts, "wagon gets its turrets", #turrets(s.a) .. " turrets")
   local all_safe = true
@@ -301,6 +298,17 @@ script.on_event(defines.events.on_tick, function()
   end
   if age == 1300 then
     report(alive(s.a_enemies) == 0, "standing train kills nearby enemies", alive(s.a_enemies) .. " left")
+    report(
+      s.a.health > s.a.max_health * 0.9,
+      "wagon survives the fight",
+      string.format(
+        "wagon %.0f/%.0f, locomotive %.0f/%.0f",
+        s.a.health,
+        s.a.max_health,
+        s.a_loco.health,
+        s.a_loco.max_health
+      )
+    )
     for _, e in pairs(s.b_enemies) do
       if e.valid then log(string.format("WAGONDEBUG left %.1f,%.1f hp %.0f", e.position.x, e.position.y, e.health)) end
     end

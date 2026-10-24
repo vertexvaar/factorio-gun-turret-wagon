@@ -44,8 +44,9 @@ local function swap(rig, elevated)
   for i, old in pairs(rig.turrets) do
     local new = create_turret(rig.wagon, elevated, old.position)
     if config.fluid then
-      local fluid = old.get_fluid(1)
-      if fluid then new.insert_fluid(fluid) end
+      for name, amount in pairs(old.get_fluid_contents()) do
+        new.insert_fluid({ name = name, amount = amount })
+      end
     else
       local from = old.get_inventory(defines.inventory.turret_ammo)
       local to = new.get_inventory(defines.inventory.turret_ammo)
@@ -182,8 +183,8 @@ local function refill_fluid(rig)
   if not fluid or not accepted()[fluid.name] then return end
   for _, turret in pairs(rig.turrets) do
     if fluid.amount <= 0 then return end
-    local current = turret.get_fluid(1)
-    local need = config.refill - (current and current.amount or 0)
+    -- the turret holds fluid in its fluidbox and in an internal buffer
+    local need = config.refill - (turret.get_fluid_contents()[fluid.name] or 0)
     if need > 1 then
       local moved = turret.insert_fluid({
         name = fluid.name,
@@ -191,7 +192,7 @@ local function refill_fluid(rig)
         temperature = fluid.temperature,
       })
       if moved > 0 then
-        wagon.remove_fluid({ name = fluid.name, amount = moved })
+        wagon.remove_fluid(1, moved)
         fluid.amount = fluid.amount - moved
       end
     end
