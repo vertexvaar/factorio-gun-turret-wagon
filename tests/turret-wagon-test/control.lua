@@ -5,7 +5,8 @@
 local SPECS = {
   ["gun-turret-wagon"] = { mounts = 3, refill = 10, ammo = "firearm-magazine", amount = 50, distance = 12 },
   ["flamethrower-turret-wagon"] = { mounts = 2, refill = 100, fluid = "light-oil", amount = 1000, distance = 12 },
-  ["rocket-turret-wagon"] = { mounts = 2, refill = 10, ammo = "rocket", amount = 50, distance = 22 },
+  -- rockets have a minimum range: their targets keep their distance
+  ["rocket-turret-wagon"] = { mounts = 2, refill = 10, ammo = "rocket", amount = 50, distance = 22, hold = true },
 }
 local MOD, SPEC
 for name, spec in pairs(SPECS) do
@@ -221,7 +222,11 @@ local function spawn_enemies()
   for i = -2, 2 do
     local biter =
       s.surface.create_entity({ name = "small-biter", force = "enemy", position = { -9 + i * 2, 1 + SPEC.distance } })
-    biter.commandable.set_command({ type = defines.command.attack, target = s.a })
+    if SPEC.hold then
+      biter.commandable.set_command({ type = defines.command.stop, ticks_to_wait = 100000 })
+    else
+      biter.commandable.set_command({ type = defines.command.attack, target = s.a })
+    end
     s.a_enemies[#s.a_enemies + 1] = biter
   end
   report(alive(s.a_enemies) == 5, "enemies spawned near the standing train")

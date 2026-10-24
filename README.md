@@ -19,6 +19,7 @@ nothing per tick. Every 30 ticks the guns are topped up from the wagon. Mining t
 
     python tests/run.py                 # headless, with Space Age
     python tests/run.py --no-space-age
+    python tests/ingame.py              # opens a game window: build, mine, ghost revive, blueprint
     python tests/shots.py               # opens a game window briefly, writes previews/shots/*.png
 
 ## Release
