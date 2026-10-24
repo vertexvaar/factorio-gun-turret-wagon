@@ -1,5 +1,6 @@
 local config = require("config")
 local rig = require("prototypes.rig")
+local graphics = require("prototypes.graphics")
 
 -- The wagon: a cargo wagon whose cargo feeds the turrets on its roof.
 local wagon = table.deepcopy(data.raw["cargo-wagon"]["cargo-wagon"])
@@ -15,6 +16,14 @@ wagon.color = { r = 0.35, g = 0.4, b = 0.25, a = 1 }
 wagon.allow_manual_color = true
 wagon.factoriopedia_simulation = nil
 rig.armour(wagon)
+local pictures = graphics.wagon_pictures()
+if pictures then
+  wagon.pictures = pictures
+  -- an armoured wagon has no sliding doors
+  wagon.horizontal_doors = nil
+  wagon.vertical_doors = nil
+end
+wagon.icons = graphics.icons("__base__/graphics/icons/gun-turret.png") or wagon.icons
 
 local item = table.deepcopy(data.raw["item-with-entity-data"]["cargo-wagon"])
 item.name = config.wagon
