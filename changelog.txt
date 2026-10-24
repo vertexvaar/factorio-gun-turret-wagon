@@ -5,3 +5,5 @@ Date: 2026-10-24
     - Machine gun wagon: a cargo wagon with three machine guns on its roof that work like gun turrets, also while moving.
     - The guns reload from bullet magazines in the wagon's cargo.
     - Works on elevated rails. Wagon quality carries over to the guns.
+  Info:
+    - Preview release: the wagon still uses the vanilla look, its own armoured art follows in the next version.

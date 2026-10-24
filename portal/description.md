@@ -1,5 +1,7 @@
 A cargo wagon with three machine guns on its roof. They shoot like gun turrets, also while the train is moving.
 
+**Preview release:** the wagon still uses the vanilla look. Its own armoured art is on the way.
+
 ![Machine gun wagon in action](https://raw.githubusercontent.com/vertexvaar/factorio-gun-turret-wagon/main/previews/portal/1-fighting.png)
 
 ## How it works
