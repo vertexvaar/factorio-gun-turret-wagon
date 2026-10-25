@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 2026-10-25
+  Bugfixes:
+    - Trees in front of the wagon now cover its turrets; they were drawn on top of them.
+    - On north-south tracks without Space Age the turrets sat almost a tile north of their mounts.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2026-10-24
   Graphics:
