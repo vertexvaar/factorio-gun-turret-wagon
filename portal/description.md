@@ -1,32 +1,11 @@
-A cargo wagon with three machine guns on its roof. They shoot like gun turrets, also while the train is moving.
+The machine gun wagon now lives in **Military Wagons**, together with the machine gun, flamethrower and rocket wagons:
 
-![Machine gun wagon in action](https://raw.githubusercontent.com/vertexvaar/factorio-gun-turret-wagon/main/previews/portal/1-fighting.png)
+- Mod portal: [https://mods.factorio.com/mod/military-wagons](https://mods.factorio.com/mod/military-wagons)
+- Source: [https://github.com/vertexvaar/factorio-military-wagons](https://github.com/vertexvaar/factorio-military-wagons)
 
-## How it works
+This version is an empty bridge. It contains no wagon of its own and only depends on Military Wagons, so updating pulls in the new mod. Wagons in existing saves keep working.
 
-- Put bullet magazines into the wagon. It has 10 cargo slots.
-- Each gun keeps 10 magazines loaded and reloads from the wagon's cargo by itself.
-- The guns turn and unfold faster than a gun turret, so they also hit targets while the train passes by.
-- Bullet damage and shooting speed research apply as usual.
-- The wagon's quality carries over to its guns.
-- Works on elevated rails.
-- Mining the wagon gives back the magazines that were loaded in the guns.
+- Each wagon in Military Wagons can be switched off in the startup settings, if you only want this one.
+- When you switch over, the ammo loaded in the wagon's turrets is lost once. The turrets reload from the wagon's cargo or tank by themselves.
 
-## Unlocking
-
-Research **Machine gun wagon** after Railway and Gun turret. The recipe takes a cargo wagon, three gun turrets and steel.
-
-## Performance
-
-Standing wagons cost nothing per tick. Only moving wagons move their guns along, and reloading runs twice a second.
-
-## Under the hood
-
-Factorio has no turrets on rolling stock. Every wagon carries three hidden turrets that can't be selected or attacked and that follow the wagon.
-
-## Related mods
-
-- [Flamethrower Wagon](https://mods.factorio.com/mod/flamethrower-turret-wagon)
-- [Rocket Wagon](https://mods.factorio.com/mod/rocket-turret-wagon)
-
-Languages: English, German. Source and issues: [GitHub](https://github.com/vertexvaar/factorio-gun-turret-wagon).
+Once Military Wagons is installed you can remove this mod.

@@ -1,29 +1,13 @@
 # Machine Gun Wagon
 
-Factorio 2.1 mod (Space Age optional). A cargo wagon with three machine gun turrets on its roof. The guns work like
-gun turrets, also while the train is moving, and reload from magazines in the wagon's cargo.
+The machine gun wagon now lives in **Military Wagons**, together with the machine gun, flamethrower and rocket wagons:
 
-- Put any bullet magazines into the wagon (10 slots). Each gun keeps 10 magazines loaded.
-- The guns turn and unfold faster than a gun turret, so they can hit targets while passing.
-- Turret damage and shooting speed research applies as usual. Wagon quality carries over to the guns.
-- Works on elevated rails.
-- Unlocked by the technology "Machine gun wagon" (after railway and gun turret).
+- Mod portal: [https://mods.factorio.com/mod/military-wagons](https://mods.factorio.com/mod/military-wagons)
+- Source: [https://github.com/vertexvaar/factorio-military-wagons](https://github.com/vertexvaar/factorio-military-wagons)
 
-## How it works
+This version is an empty bridge. It contains no wagon of its own and only depends on Military Wagons, so updating pulls in the new mod. Wagons in existing saves keep working.
 
-Factorio has no turrets on rolling stock. Each wagon gets three hidden turrets (not selectable, not attackable,
-no collision). While the wagon moves, the script teleports them along with it every tick; standing wagons cost
-nothing per tick. Every 30 ticks the guns are topped up from the wagon. Mining the wagon returns the loaded magazines.
+- Each wagon in Military Wagons can be switched off in the startup settings, if you only want this one.
+- When you switch over, the ammo loaded in the wagon's turrets is lost once. The turrets reload from the wagon's cargo or tank by themselves.
 
-## Tests
-
-    python tests/run.py                 # headless, with Space Age
-    python tests/run.py --no-space-age
-    python tests/ingame.py              # opens a game window: build, mine, ghost revive, blueprint
-    python tests/shots.py               # opens a game window briefly, writes previews/shots/*.png
-
-## Release
-
-    python tools/package.py             # dist/<name>_<version>.zip
-    python tools/publish.py publish     # first release (needs FACTORIO_API_KEY)
-    python tools/publish.py upload      # later releases
+Once Military Wagons is installed you can remove this mod.
